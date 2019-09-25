@@ -6,14 +6,21 @@
 <style>
 p{
     margin: 16px auto;
-}</style>
+}
+.ad{
+    padding: 0px 15px 15px 15px;
+    box-shadow: 5px 5px 5px #ccc;
+    border: 1px solid gray;
+    border-radius: 15px;
+}
+</style>
 @endsection
 
 @section('content')
 <div class="content">
     <h1>Python</h1>
 
-    <p>Unfortunately, the dependencies for any python project are installed globally in Operative System.</P>
+    <p>Unfortunately, the dependencies for any python project are installed globally in the Operative System.</P>
     <p>But, thanks to freeze command, we can create easily the file requirements.txt that we will need to implement this project using Docker.</p>
     <pre><code class="language-javascript">pip freeze > requirements.txt</code></pre>
 
@@ -79,11 +86,8 @@ pyenv                1.0                 056847527e06        18 seconds ago     
 
 app = Flask(__name__)
 
-#headers = {&apos;ContentType&apos;:&apos;application/json&apos;}
-
 @app.route(&apos;/&apos;, methods=[&apos;GET&apos;])
 def get_products():
-  #return jsonify({&apos;msg&apos;:&apos;Hello world&apos;}), 200, headers
   return jsonify({&apos;msg&apos;:&apos;Hello world&apos;}), 200
 
 if __name__ == &apos;__main__&apos;:
@@ -168,6 +172,18 @@ services:
 
 
 
+    <div class="ad">
+        <p>You can find the source until now in github repository.</p>
+        <pre><code class="language-bash">git clone https://github.com/federicozacayan/restful-api-python.git python-project</code></pre>
+
+        <p>The you can list the commits.</p>
+        <pre><code class="language-bash">git log --oneline</code></pre>
+
+        <p>The you can go to the commit 'Hello World'.</p>
+        <pre><code class="language-bash">git checkout 76eefc3</code></pre>
+    </div>
+
+
 
     <p>Now, it is moment to improve our Hello World application.</p>
     <p>To begin from the beginning, we will create a package named flaskapi (lowercase).</p>
@@ -195,111 +211,111 @@ db = SQLAlchemy(app)
 from flaskapi import routes, errors</code></pre>
 
     <p>As you can see, at the end of the file we need to import and create routes and errors.</p>
-    <p>We can start by /python-tutorial/flaskapi/error.py.</p>
+    <p>We can start by /python-tutorial/flaskapi/errors.py.</p>
     <pre><code class="language-bash">from flask import jsonify
 from flaskapi import app
 
-ContentType = {&apos;ContentType&apos;:&apos;application/json&apos;}
-
 @app.errorhandler(404)
 def not_found(e):
-    return jsonify({&apos;error&apos;:&apos;Not Data found&apos;}), 404, ContentType
+    return jsonify({&apos;error&apos;:&apos;Not Data found&apos;}), 404
 
 @app.errorhandler(405)
 def not_found(e):
-    return jsonify({&apos;error&apos;:&apos;Method Not Allowed&apos;}), 405, ContentType
+    return jsonify({&apos;error&apos;:&apos;Method Not Allowed&apos;}), 405
 
 @app.errorhandler(400)
 def not_found(e):
-    return jsonify({&apos;error&apos;:&apos;Bad request&apos;}), 400, ContentType
+    return jsonify({&apos;error&apos;:&apos;Bad request&apos;}), 400
 </code></pre>
 
 
 
     <p>And continuing creating the /python-project/flaskapi/routes.py file.</p>
     <pre><code class="language-bash">from flask import request, jsonify
-from flaskapi.models import User
-from flaskapi.schemas import UserSchema, user_schema, users_schema
+from flaskapi.models import Product
+from flaskapi.schemas import ProductSchema, product_schema, products_schema
 from flaskapi import app, db
 
-ContentType = {&apos;ContentType&apos;:&apos;application/json&apos;}
-
 # Get a Product
-@app.route(&apos;/product/&lt;id&gt;&apos;, methods=[&apos;GET&apos;])
+@app.route('/product/&lt;id&gt;', methods=['GET'])
 def get_product(id):
-  product = User.query.get(id)
-  user_schema = UserSchema()
-  return user_schema.jsonify(product), 200, ContentType
+  product = Product.query.get(id)
+  product_schema = ProductSchema()
+  return product_schema.jsonify(product), 200
 
 # Save a Product
-@app.route(&apos;/product&apos;, methods=[&apos;POST&apos;])
+@app.route('/product', methods=['POST'])
 def addProduct():
-    name = request.json[&apos;name&apos;]
-    admin = User(name=name)
+    name = request.json['name']
+    admin = Product(name=name)
     db.session.add(admin)
     db.session.commit()
-    return jsonify({&apos;status&apos;:201}), 201, ContentType
+    return jsonify({'status':201}), 201
 
 
 # Get All Products
-@app.route(&apos;/product&apos;, methods=[&apos;GET&apos;])
+@app.route('/product', methods=['GET'])
 def getProducts():
-    users = User.query.all()
-    n = db.session.query(User.name).count()
-    output = users_schema.dump(users);
+    products = Product.query.all()
+    n = db.session.query(Product.name).count()
+    output = products_schema.dump(products);
     return jsonify({
-        &apos;q&apos;: n,
-        &apos;user&apos; : output
-    }), 200, ContentType
+        'q': n,
+        'product' : output
+    }), 200
 
 # Delete Product
-@app.route(&apos;/product/&lt;id&gt;&apos;, methods=[&apos;DELETE&apos;])
+@app.route('/product/&lt;id&gt;', methods=['DELETE'])
 def deleteProduct(id):
-  product = User.query.get(id)
-  db.session.delete(product)
-  db.session.commit()
-  return jsonify({&apos;status&apos;:&apos;300&apos;}), 300
+    try:
+        product = Product.query.get(id)
+        db.session.delete(product)
+        db.session.commit()
+        return jsonify({'status':'200'}), 200
+    except:
+        return jsonify({'status':'500'}), 500
+
+
 
 # Update Product
-@app.route(&apos;/product/&lt;id&gt;&apos;, methods=[&apos;PUT&apos;])
+@app.route('/product/&lt;id&gt;', methods=['PUT'])
 def updateProduct(id):
-  product = User.query.get(id)
-  name = request.json[&apos;name&apos;]
+  product = Product.query.get(id)
+  name = request.json['name']
   product.name = name
   db.session.commit()
 
-  return user_schema.jsonify(product), 200, ContentType</code></pre>
+  return product_schema.jsonify(product), 200
+0</code></pre>
 
     <p>The approach we have to handle databases is  setting up the data structure through Models.</p>
     <p>Have a look to the /python-project/flaskapi/models.py file.</p>
     <pre><code class="language-bash">from flaskapi import db
 
-class User(db.Model):
+class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
 
     def __repr__(self):
-        return &apos;&lt;User %r&gt;&apos; % self.name
-</code></pre>
+        return '&lt;Product %r&gt;' % self.name</code></pre>
 
 
   <p>In order to convert the database results in json we need to use schemas.</p>
   <p>That is way we need the following /python-project/flaskapi/schemas.py file.</p>
   <pre><code class="language-javascript">from flask_marshmallow import Marshmallow
-from flaskapi.models import User
+from flaskapi.models import Product
 from flaskapi import app, db
 
 ma = Marshmallow(app)
-class UserSchema(ma.ModelSchema):
+class ProductSchema(ma.ModelSchema):
     class Meta:
-        model = User
+        model = Product
 
-user_schema = UserSchema()
-users_schema = UserSchema(many=True)
+product_schema = ProductSchema()
+products_schema = ProductSchema(many=True)
 
 #create database after define schemas
-db.create_all()
-</code></pre>
+db.create_all()</code></pre>
 
 
     <p>All the magic happen, when every code line is placed in the properly place.</p>
@@ -314,7 +330,7 @@ db.create_all()
 
 
 
-</div>    
+</div>
 @endsection
 
 @section('js')

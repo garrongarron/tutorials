@@ -13,39 +13,41 @@ p{
 <div class="content">
     <h1>PHP</h1>
 
-    <p>Create folder and go to the folder.</p>
-    <pre><code class="language-bash">mkdir laradock-tutorial && cd laradock-tutorial</code></pre>
+    <p>Create folder 'php-project' and go into it.</p>
+    <p>Once there, clone laradock project.</p>
+    <p>Afther, create the 'web' folder.</p>
+    <p>Go to laradock folder. Take note this is not the folder we made above.</p>
+    <p>Copy the environment settings.</p>
+    <pre><code class="language-bash">mkdir php-project &amp;&amp;\
+cd php-project &amp;&amp;\
+git clone https://github.com/laradock/laradock.git &amp;&amp;\
+mkdir web &amp;&amp;\
+cd laradock &amp;&amp;\
+cp env-example .env</code></pre>
 
-    <p>Clone laradock project.</p>
-    <pre><code class="language-bash">git clone https://github.com/laradock/laradock.git</code></pre>
-
-    <p>Create project folder.</p>
-    <pre><code class="language-bash">mkdir project-folder</code></pre>
-
-    <p>Go to laradock folder. Take note this is not the folder we made abouve.</p>
-    <pre><code class="language-bash">cd laradock</code></pre>
-
-    <p>Copy environment configuration.</p>
-    <pre><code class="language-bash">cp env-example .env</code></pre>
-
-    <p>Set project folder into /laradock-tutorial/laradock/.env file.</p>
-    <pre><code class="language-bash">APP_CODE_PATH_HOST=../project-folder/</code></pre>
+    <p>Set project folder into php-project/laradock/.env file.</p>
+    <pre><code class="language-bash">APP_CODE_PATH_HOST=../web/</code></pre>
 
 
 
 
 
-    <p>Run docker-compose in /laradock-tutorial/laradock folder.</p>
+    <p>Run docker-compose in php-project/laradock folder.</p>
     <pre><code class="language-bash">docker-compose up -d nginx mysql</code></pre>
 
     <p>Go into the container.</p>
     <pre><code class="language-bash">sudo docker-compose exec workspace bash</code></pre>
 
-    <p>Clone laravel project into the container. Be sure write dot at the end pointing out run the command in the current folder.</p>
-    <pre><code class="language-bash">composer create-project --prefer-dist laravel/laravel .</code></pre>
+    <p>Clone laravel project into the container and be sure to write a dot at the end, to pointing out to COMPOSER (the package installer) that it has to place the source downloaded into the current folder.</p>
+    <pre><code class="language-bash">composer create-project --prefer-dist laravel/laravel="6.0.*" .</code></pre>
 
-    <p>Set up laravel database environment configuration according to laradock environment configuration.</p>
-    <p>Take the values from /laradock-tutorial/laradock/.env.</p>
+    <p>Alternatively, you can download the final source code of this tutorial using git and composer. If this is the case, you will see all the following steps already implemented.</p>
+    <pre><code class="language-bash">git clone https://github.com/federicozacayan/restful-api-php.git . && composer install</code></pre>
+
+
+
+    <p>Configure environment variables in Laravel related to the database connection.</p>
+    <p>Take the values from php-project/laradock/.env.</p>
     <pre><code class="language-bash">...
 MYSQL_DATABASE=default
 MYSQL_USER=default
@@ -53,7 +55,7 @@ MYSQL_PASSWORD=secret
 ...
 </code></pre>
 
-    <p>And set the values in /laradock-tutorial/project-folder/.env 
+    <p>And set the values in php-project/web/.env 
     (or in /var/www/.env if you are into the container).</p>
     <pre><code class="language-bash">...
 DB_HOST=mysql
@@ -62,8 +64,9 @@ DB_USER=default
 DB_PASSWORD=secret
 ...
 </code></pre>
+    <p>As you can see, we have replaced 127.0.0.1 by mysql, which is the name of the hostname asigned to mysql.</p>
 
-    <p>Set permission in the project folder (/laradock-tutorial/project-folder/ or /var/www/).</p>
+    <p>Set permission to the project folder (php-project/web/ or /var/www/).</p>
     <pre><code class="language-bash">sudo chmod -R 777  .</code></pre>
 
     <p>Check laravel application.</p>
@@ -84,20 +87,21 @@ DB_PASSWORD=secret
     <p>You can go out of the container just writing exit.</p>
     <pre><code class="language-bash">root@bb281fc97634:/var/www# exit</code></pre>
     
-    <p>You can stop the container from /laradock-tutorial/laradock/</p>
+    <p>You can stop docker-compose executing the following command in the php-project/laradock/ folder.</p>
     <pre><code class="language-bash">sudo docker-compose stop</code></pre>
 
-    <p> Or you can down the container</p>
+    <p>Or you can down docker-compose</p>
     <pre><code class="language-bash">sudo docker-compose down</code></pre>
 
-    <p>So, if you stop or down the container run it again and go into the container as we mentioned before.</p>
+    <p>Now, we can continue developing this RESTful application.</p>
+    <p>So, if you stop or down the docker-compose, please run docker-compose again and go into the container as we mentioned before.</p>
     <p>Then, create a module named Product.</p>
     <pre><code class="language-bash">php artisan make:model Product --all</code></pre>
 
 
 
 
-    <p>Add some fields into the /database/migrations/xxxx_xx_xx_xxxxxx_create_products_table.php.</p>
+    <p>Add some fields into the database/migrations/xxxx_xx_xx_xxxxxx_create_products_table.php.</p>
     <pre><code class="language-javascript">public function up()
 {
     Schema::create('products', function (Blueprint $table) {
@@ -145,19 +149,19 @@ DB_PASSWORD=secret
     <p>It will appear the following error.</p>
     <pre><code class="language-javascript"> Illuminate\Database\QueryException  : SQLSTATE[HY000] [2054] The server requested authentication method unknown to the client (SQL: select * from information_schema.tables where table_schema = default and table_name = migrations and table_type = 'BASE TABLE')</code></pre>
 
-    <p>To solve this issue you have to go into mysql container and alter the way the user are IDENTIFIED and configure mysql_native_password way.</p>
+    <p>To solve this issue you have to go into mysql container and alter the way the users are identified and configure mysql_native_password way.</p>
     
     
     <p>Check the mysql container name (probably 'laradock_mysql_1'), and go into it.</p>
     <pre><code class="language-bash">sudo docker exec -it laradock_mysql_1 bash</code></pre>
 
     <p>Once inside, connect the databse using mysql client.</p>
-    <pre><code class="language-null">root@randon123:/# mysql -p root -u</code></pre>
+    <pre><code class="language-null">root@randon123:/# mysql -u root -p</code></pre>
 
-    <p>Use the password in located in /laradock-tutorial/laradock/.env, which is root.</p>
+    <p>Use the password in located in php-project/laradock/.env, which is root.</p>
     <pre><code class="language-bash">MYSQL_ROOT_PASSWORD=root</code></pre>
 
-    <p>Then, you have to alter the IDENTIFIED way the user use.</p>
+    <p>Then, you must modify the form of identification that the user uses.</p>
     <pre><code class="language-bash">mysql&gt; ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
 Query OK, 0 rows affected (0.08 sec)
 
@@ -216,7 +220,8 @@ public function destroy(Product $product) {
 
 
 
-    <p>Now, you cant test the aplication with any API Rest consumer</p>
+    <p>Now, you cant test the aplication with any API Rest consumer. In the following url.</p>
+    <pre><code class="language-javascript">http://localhost/Product</code></pre>
     
 
 </div>    

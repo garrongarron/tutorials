@@ -33,7 +33,7 @@ p{
     <pre><code class="language-css">cd angular-tutorial</code></pre>
 
     <p>Run the local server</p>
-    <pre><code class="language-css">ng serve-o</code></pre>
+    <pre><code class="language-css">ng serve -o</code></pre>
 
     <p>Create a service named Api</p>
     <pre><code class="language-typescript">ng generate service Api</code></pre>

@@ -45,12 +45,11 @@ server.listen(port);</code></pre>
 services:
   node:
     image: &quot;node:8&quot;
-    user: &quot;node&quot;
-    working_dir: /home/node/app
+    working_dir: /usr/src/app
     environment:
-      - NODE_ENV=production
+        - NODE_ENV=production #development
     volumes:
-      - ./:/home/node/app
+      - ./:/usr/src/app
     ports:
       - &quot;3000:3000&quot;
     command: bash -c &quot;npm -y init &amp;&amp; npm install --save express&quot;</code></pre>
@@ -213,13 +212,13 @@ app.use('/orders', orderRoutes);</code></pre>
     <p>We can test  the following test cases.</p>
     <pre><code class="language-javascript">GET     localhost:3000/products/
 GET     localhost:3000/products/1
-POST    localhost:3000/products/1
+POST    localhost:3000/products
 DELETE  localhost:3000/products/1
 PATCH   localhost:3000/products/1
 
 GET     localhost:3000/orders/
 GET     localhost:3000/orders/1
-POST    localhost:3000/orders/1
+POST    localhost:3000/orders/
 DELETE  localhost:3000/orders/1</code></pre>
     
 
@@ -241,13 +240,36 @@ DELETE  localhost:3000/orders/1</code></pre>
 
     <p>And finally, to automatically stop and restart the server every time there is a change in any file you have to run.</p>
     <pre><code class="language-bash">npm start</code></pre>
-    <p>But unfortunately, this procedure is not available for docker-compose environment at the moment.</p>
-    <p>This procedure is useful for you if you have node and npm installed in your host machine.</p>
-    <p>I have installed them in this way, but for didactic reasons we will avoid that installation in this tutorial.</p>
-    <p>Therefore, you can forget all what you have seen from Handling Errors title until now, and continue from here. :)</p>
+
+    <p>But unfortunately, this procedure this is not feasible using just docker-compose and we need to use Dockerfile also.</p>
+
+    <p>Add a Dockerfile file in the root folder.</p>
+    <pre><code class="language-bash">FROM node:8
+
+RUN npm install -g nodemon
+
+RUN mkdir -p /usr/src/app
+
+WORKDIR /usr/src/app
+
+COPY package.json .
+
+RUN npm install
+
+CMD [ &quot;npm&quot;, &quot;start&quot; ]
+</code></pre>
+
+    <p>Now, replace in docker-compose.yml file</p>
+    <pre><code class="language-css">build: . </code></pre>
+    <p>Instead of</p>
+    <pre><code class="language-css">image: "node:8" </code></pre>
+    <p>In this way image is loaded using the Dockerfile file located in the same folder. But, it is able add nodemon as additional layers in the image.</p>
+    <p>This procedure is useful for you if you do not have node and npm installed in your host machine.</p>
 
 
-    <p>When you are developing you want to know what kind of request you receive in the console.</p>
+
+
+    <p>On the other hand, when you are developing you want to know what kind of request you receive in the console.</p>
     <p>For it, you can install morgan as a dependency of the project.</p>
     <p>Temporarily you can change docker-compose.yml.</p>
     <pre><code class="language-bash">command: bash -c &quot;npm install --save morgan&quot;</code></pre>
@@ -368,9 +390,10 @@ const mongoose = require(&quot;mongoose&quot;);
 ...
 mongoose.connect(
     &quot;mongodb://admin:secret@mongo:27017/myDatabase&quot;,
-  {
-    useMongoClient: true
-  }
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    }
 );
 mongoose.Promise = global.Promise;
 ...</code></pre>
@@ -378,7 +401,7 @@ mongoose.Promise = global.Promise;
     <p>You can change the connection string to make this project easier.</p>
     <pre><code class="language-javascript">"mongodb://mongo:27017/expressmongo" // instead of "mongodb://admin:secret@mongo:27017/myDatabase",</code></pre>
 
-    <p>Then, we need to create a folder named model and an api/model/order.js file.</p>
+    <p>Then, we need to create a folder named model and an api/models/order.js file.</p>
     <pre><code class="language-javascript">const mongoose = require('mongoose');
 
 const orderSchema = mongoose.Schema({
@@ -391,7 +414,7 @@ module.exports = mongoose.model('Order', orderSchema);</code></pre>
 
 
 
-    <p>We need also, an api/model/product.js file.</p>
+    <p>We need also, an api/models/product.js file.</p>
     <pre><code class="language-javascript">const mongoose = require('mongoose');
 
 const productSchema = mongoose.Schema({
@@ -524,7 +547,7 @@ module.exports = router;
 </code></pre>
 
 
-<p>And the same with api/model/product.js file.</p>
+<p>And the same with api/routes/products.js file.</p>
     <pre><code class="language-javascript">const express = require(&quot;express&quot;);
 const router = express.Router();
 const mongoose = require(&quot;mongoose&quot;);
@@ -680,13 +703,12 @@ module.exports = router;
 
 services:
   node:
-    image: &quot;node:8&quot;
-    user: &quot;node&quot;
-    working_dir: /home/node/app
+    build: .
+    working_dir: /usr/src/app
     environment:
-      - NODE_ENV=production
+        - NODE_ENV=production #development
     volumes:
-      - ./:/home/node/app
+      - ./:/usr/src/app
     ports:
       - &quot;3000:3000&quot;
     command: bash -c &quot;npm start&quot;
