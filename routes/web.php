@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('porfolio');
 });
 
-Route::group(['prefix'=>'/tutorial','as'=>'porfolio.'], function(){
+Route::group(['prefix'=>'/','as'=>'porfolio.'], function(){
 
     Route::get('restful-api-react', function () {
         return view('porfolio.react');
