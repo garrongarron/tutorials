@@ -10,6 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+$whitelist = array(
+    '127.0.0.1',
+    '172.18.0.1',
+    '::1'
+);
+$local = false;
+if(!isset($_SERVER['REMOTE_ADDR'])){
+    $local = true;
+}
+define("PEPE", $local);
+
 
 Route::get('/', function () {
     return view('porfolio');

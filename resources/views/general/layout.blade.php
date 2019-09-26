@@ -4,8 +4,12 @@
     <meta charset="utf-8">
 
     <!-- Keep this tag for relative url starting without /, for example  href="css/prism.css"-->
-    <base href="/">
 
+    @if (PEPE)
+    <base href="https://federicozacayan.github.io/tutorial/">
+    @else
+    <base href="/">
+    @endif
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Federico Zacayan</title>
