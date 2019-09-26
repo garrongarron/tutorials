@@ -4,13 +4,14 @@
     <meta charset="utf-8">
 
     <!-- Keep this tag for relative url starting without /, for example  href="css/prism.css"-->
-    <base href="https://federicozacayan.github.io/tutorial/">
+    <base href="/">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Federico Zacayan</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     @section('css')
+        <link href="css/css.css" rel="stylesheet" type="text/css"/>
         <link href="css/prism.css" rel="stylesheet" type="text/css"/>
         <link href="css/sticky.css" rel="stylesheet" type="text/css"/>
         <style>
@@ -27,6 +28,12 @@
     <div class="container">
         @yield('content')
     </div>
+    @section('footer')
+        <div class="footer">
+            <b>federico.zacayan@gmail.com</b>
+            <!-- <i>0272605604</i> -->
+        </div>
+    @show
 </body>
 @section('js')
     <script type="text/javascript" src="js/prism.js"></script>

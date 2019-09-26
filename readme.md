@@ -15,5 +15,5 @@ php artisan export
 To export to static website run:
 
 ```bash
-copy-submodule-tutorial.sh
+sudo bash copy-submodule-tutorial.sh
 ```

@@ -20,7 +20,7 @@ Route::get('/', function () {
 
         Route::get('/', function () {
             return view('porfolio');
-        });
+        })->name('home');
         Route::get('restful-api-react', function () {
             return view('porfolio.react');
         })->name('react');
