@@ -3,9 +3,8 @@
 <head>
     <meta charset="utf-8">
 
+    <!-- Keep this tag for relative url starting without /, for example  href="css/prism.css"-->
     <base href="https://federicozacayan.github.io/tutorial/">
-    @if (PEPE)
-    @endif
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
