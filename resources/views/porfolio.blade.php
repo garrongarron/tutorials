@@ -41,7 +41,7 @@
                 that is why I developed this platform on github.</p>
             <p>I invested $0 on this but I applied all my background knowledge,
                 like SSH key, Bash scripting, Docker, Git to offer you a great experience
-                reading tutorials about RESTful API. This allowme increase my productivity a 50% in RESTful API's.</p>
+                reading tutorials about RESTful API. This allowme increase my productivity a 50% in RESTful API's develop.</p>
 
             <div class="links">
                 <a href="{{route('porfolio.react')}}">React</a>
@@ -83,9 +83,9 @@
             <p>By the way, this site is build on Laravel. It is exported as
                     static site with a library and automatically deploy in github page.</p>
             <p>This CD/CI is a clock system where every single element has a function of the remain pieces depend on.</p>
-            <p>At the moment, I am hearing offers to work, so if you have interes in contract me do not hesitate to get in touch.</p>
+            <p>At the moment, I am hearing offers to work, so if you have interest in contract me do not hesitate to get in touch.</p>
 
-            
+
 
         </div>
     </div>
