@@ -17,3 +17,36 @@ To export to static website run:
 ```bash
 sudo bash copy-submodule-tutorial.sh
 ```
+
+In laradock/nginx/sites fodler add testing.conf file.
+```nginx
+server {
+
+    listen 81;
+    listen [::]:81;
+
+    server_name testing;
+
+    root /var/www/dist;
+
+    location / {
+        root /var/www/dist;
+        try_files $uri $uri/;
+    }
+
+     location /tutorial {
+        alias /var/www/dist;
+        try_files $uri $uri/ @tutorial;
+    }
+
+    location @tutorial {
+        rewrite /tutorial/(.*)$ /tutorial/index.php?/$1 last;
+    }
+
+}
+```
+And add port 81 in the seccion ### NGINX Server ### in laradock/docker-compose.yml
+```yaml
+- "${NGINX_HOST_HTTP_PORT}:80"
+- "81:81"
+```        

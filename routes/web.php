@@ -16,7 +16,7 @@ $whitelist = array(
     '::1'
 );
 $local = false;
-if(!isset($_SERVER['REMOTE_ADDR'])){
+if(isset($_SERVER['REMOTE_ADDR'])){
     $local = true;
 }
 define("PEPE", $local);

@@ -6,9 +6,10 @@
     <!-- Keep this tag for relative url starting without /, for example  href="css/prism.css"-->
 
     @if (PEPE)
-    <base href="https://federicozacayan.github.io/tutorial/">
-    @else
+    <!-- <base href="https://federicozacayan.github.io/tutorial/"> -->
     <base href="/">
+    @else
+    <base href="/tutorial/">
     @endif
     <meta name="viewport" content="width=device-width, initial-scale=1">
 

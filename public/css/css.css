@@ -6,7 +6,7 @@ pre {
     /*font-size: 17px!important;*/
 }
 a{
-    /*padding: 4px;*/
+    padding: 4px;
 }
 
 .center{
@@ -29,6 +29,12 @@ a{
     padding: 10px;
     font-size: .8em;
     cursor: pointer;
+
+    margin: 10px;
+    border-radius: 5px;
+    /*box-shadow: 3px 3px 3px green;*/
+    text-shadow: 1px 1px 1px black;
+    /*border: 1px solid rgb(0,100,0);*/
 }
 .footer i, .footer b{
     display: inline-block;
