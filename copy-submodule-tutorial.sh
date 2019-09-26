@@ -1,3 +1,3 @@
 #!/bin/bash
-echo "hello world";
+echo "Copying files in folder in  ../tutorial/ ()";
 cp -r dist/* ../tutorial/
