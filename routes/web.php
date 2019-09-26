@@ -12,38 +12,30 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/resume', function () {
-    return view('welcome');
-});
-Route::get('/porfolio', function () {
     return view('porfolio');
 });
 
-Route::group(['prefix'=>'porfolio','as'=>'porfolio.'], function(){
-    Route::get('/', function () {
-        return view('porfolio');
-    });
-    Route::get('react', function () {
+Route::group(['prefix'=>'/','as'=>'porfolio.'], function(){
+
+    Route::get('restful-api-react', function () {
         return view('porfolio.react');
     })->name('react');
-    Route::get('angular', function () {
+    Route::get('restful-api-angular', function () {
         return view('porfolio.angular');
     })->name('angular');
-    Route::get('vue', function () {
+    Route::get('restful-api-vue', function () {
         return view('porfolio.vue');
     })->name('vue');
 
 
 
-    Route::get('php', function () {
+    Route::get('restful-api-php', function () {
         return view('porfolio.php');
     })->name('php');
-    Route::get('node', function () {
+    Route::get('restful-api-node', function () {
         return view('porfolio.node');
     })->name('node');
-    Route::get('python', function () {
+    Route::get('restful-api-python', function () {
         return view('porfolio.python');
     })->name('python');
 });
