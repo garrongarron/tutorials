@@ -9,7 +9,7 @@
             </div>
 
             <div class="links">
-                <a href="{{route('porfolio.react')}}">React</a>
+                <a href="{{route('porfolio.react', [])}}">React</a>
                 <a href="{{route('porfolio.angular')}}">Angular</a>
                 <a href="{{route('porfolio.vue')}}">Vue</a>
             </div>

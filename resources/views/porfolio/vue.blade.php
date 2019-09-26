@@ -1,14 +1,6 @@
 @extends('general.layout')
 
 
-@section('css')
-<link href="{{asset('css/prism.css')}}" rel="stylesheet" type="text/css"/>
-<style>
-p{
-    margin: 16px auto;
-}</style>
-@endsection
-
 @section('content')
 <div class="content">
 
@@ -31,9 +23,9 @@ p{
 &lt;script src=&quot;usercomponent.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;index.js&quot;&gt;&lt;/script&gt;
 &lt;/html&gt;</code></pre>
-    
-    
-    
+
+
+
 
 
     <p>Create an index.js file where we make the request to the server.</p>
@@ -98,7 +90,7 @@ p{
 
     <p>To delete an user we can add a buttom into the template.</p>
     <pre><code class="language-html">&lt;input type=&quot;button&quot; v-on:click='drop(userprop.id)' value=&quot;Delete&quot;/&gt;</code></pre>
-    
+
     <p>We need also to create a method drop into the usercomponent.js</p>
     <pre><code class="language-javascript">Vue.component('usercomponent', {
     template: '#user-template',
@@ -112,7 +104,7 @@ p{
 
     <p>With the $emit method we can access to a method of the parent of the current component. See index.html.</p>
     <pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
-    &lt;usercomponent v-for=&quot;user in users&quot; :userprop=&quot;user&quot; 
+    &lt;usercomponent v-for=&quot;user in users&quot; :userprop=&quot;user&quot;
     v-bind:key=&quot;user.id&quot; @delete-user-event=&quot;deleteUser&quot; &gt;&lt;/usercomponent&gt;
 &lt;/div&gt;</code></pre>
 
@@ -177,7 +169,7 @@ p{
 });</code></pre>
 
 <p>We have to use $emit method to achieve the method of the parent #app</p>
-<pre><code class="language-html">&lt;usercomponent 
+<pre><code class="language-html">&lt;usercomponent
     v-for=&quot;user in users&quot;
     :userprop=&quot;user&quot;
     v-bind:key=&quot;user.id&quot;
@@ -293,11 +285,11 @@ p{
 
 &lt;body&gt;
     &lt;div id=&quot;app&quot;&gt;
-        &lt;usercomponent 
-            v-for=&quot;user in users&quot; 
-            :userprop=&quot;user&quot; 
-            v-bind:key=&quot;user.id&quot; 
-            @delete-user-event=&quot;deleleUser&quot; 
+        &lt;usercomponent
+            v-for=&quot;user in users&quot;
+            :userprop=&quot;user&quot;
+            v-bind:key=&quot;user.id&quot;
+            @delete-user-event=&quot;deleleUser&quot;
             @update-user-event=&quot;updateUser&quot;&gt;
         &lt;/usercomponent&gt;
         &lt;input type=&quot;button&quot; v-on:click='create()' value=&quot;Create new  User&quot; /&gt;
@@ -411,8 +403,4 @@ p{
 
 
 </div>
-@endsection
-
-@section('js')
-<script type="text/javascript" src="{{asset('js/prism.js')}}"></script>
 @endsection

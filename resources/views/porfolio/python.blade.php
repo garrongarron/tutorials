@@ -2,11 +2,8 @@
 
 
 @section('css')
-<link href="{{asset('css/prism.css')}}" rel="stylesheet" type="text/css"/>
+@parent
 <style>
-p{
-    margin: 16px auto;
-}
 .ad{
     padding: 0px 15px 15px 15px;
     box-shadow: 5px 5px 5px #ccc;
@@ -331,8 +328,4 @@ db.create_all()</code></pre>
 
 
 </div>
-@endsection
-
-@section('js')
-<script type="text/javascript" src="{{asset('js/prism.js')}}"></script>
 @endsection

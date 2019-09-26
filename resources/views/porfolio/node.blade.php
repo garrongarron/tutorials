@@ -1,14 +1,5 @@
 @extends('general.layout')
 
-
-@section('css')
-<link href="{{asset('css/prism.css')}}" rel="stylesheet" type="text/css"/>
-<style>
-p{
-    margin: 16px auto;
-}</style>
-@endsection
-
 @section('content')
 <div class="content">
     <h1>Node</h1>
@@ -59,7 +50,7 @@ services:
     <p>You can edit those details later.</p>
     <p>You are installing express library and all his dependencies as a part to this project too.</p>
     <pre><code class="language-bash">sudo docker-compose up</code></pre>
-   
+
     <p>As a result, a package.json file is created.</p>
     <pre><code class="language-javascript">{
   &quot;name&quot;: &quot;app&quot;,
@@ -150,7 +141,7 @@ router.delete('/:orderId', (req, res, next) =&gt; {
 });
 
 module.exports = router;</code></pre>
-    
+
     <p>Then, create /api/routes/products.js file.</p>
     <pre><code class="language-javascript">const express = require('express');
 const router = express.Router();
@@ -220,7 +211,7 @@ GET     localhost:3000/orders/
 GET     localhost:3000/orders/1
 POST    localhost:3000/orders/
 DELETE  localhost:3000/orders/1</code></pre>
-    
+
 
     <h2>Handling Errors</h2>
     <p>Instead of shut down the server and run again and again. You would prefer run a tool that do this work automatically.</p>
@@ -280,13 +271,13 @@ CMD [ &quot;npm&quot;, &quot;start&quot; ]
     &quot;express&quot;: &quot;^4.17.1&quot;,
     &quot;morgan&quot;: &quot;^1.9.1&quot;
 }</code></pre>
-    
-    
+
+
     <p>Now, we have to roll back docker-compose.yml. The shortcut CTRL+Z CTRL+S could be a good way.</p>
     <pre><code class="language-css">command: bash -c &quot;npm start&quot;</code></pre>
 
     <p>Before running docker-compose again. We need to add in app.js file  the morgan dependence as a first middleware.</p>
-    
+
     <pre><code class="language-javascript">...
 const morgan = require('morgan');
 ...
@@ -362,7 +353,7 @@ error.status(404); /*instead of*/ error.status = 404; // restart needed
     <pre><code class="language-bash">sudo docker-compose up</code></pre>
     <p>And after that, rollback.</p>
     <pre><code class="language-css">command: bash -c &quot;npm start&quot;</code></pre>
-    
+
     <p>All that you need to do is import body-parser and add some middlewares before to handle routes in app.js.</p>
     <pre><code class="language-javascript">...
 const bodyParser = require(&quot;body-parser&quot;);
@@ -375,7 +366,7 @@ app.use(bodyParser.json());
   console.log(req.body.name)
 });</code></pre>
 
- 
+
 
 
     <p>Now, we need to install mongoose.</p>
@@ -754,7 +745,7 @@ root@c0NtAiN3RiDp:/# </code></pre>
 exit
 api_rest@_with_node:~$ </code></pre>
 
-      <p>But, if you do not want to do all these steps every 
+      <p>But, if you do not want to do all these steps every
       time you deploy this project the easy way is just use the default mongo docker configuration.</p>
     </div>
 
@@ -766,9 +757,5 @@ api_rest@_with_node:~$ </code></pre>
 
 
 
-</div>    
-@endsection
-
-@section('js')
-<script type="text/javascript" src="{{asset('js/prism.js')}}"></script>
+</div>
 @endsection

@@ -1,21 +1,13 @@
 @extends('general.layout')
 
 
-@section('css')
-<link href="{{asset('css/prism.css')}}" rel="stylesheet" type="text/css"/>
-<style>
-p{
-    margin: 16px auto;
-}</style>
-@endsection
-
 @section('content')
 <div class="content">
     <h1>Angular</h1>
 
     <p>Install the Angular CLI</p>
     <pre><code class="language-css">npm install -g @angular/cli</code></pre>
-    
+
     <p>Create a project</p>
     <pre><code class="language-css">ng new angular-tutorial</code></pre>
 
@@ -23,10 +15,10 @@ p{
     <pre><code class="language-css">Would you like to add Angular routing? (y/N)</code></pre>
 
     <p>Choose "CSS"</p>
-    <pre><code class="language-css">❯ CSS 
-  SCSS   [ https://sass-lang.com/documentation/syntax#scss                ] 
-  Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ] 
-  Less   [ http://lesscss.org                                             ] 
+    <pre><code class="language-css">❯ CSS
+  SCSS   [ https://sass-lang.com/documentation/syntax#scss                ]
+  Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]
+  Less   [ http://lesscss.org                                             ]
   Stylus [ http://stylus-lang.com                                         ] </code></pre>
 
     <p>Go to the project folder</p>
@@ -64,10 +56,10 @@ import { HttpClientModule }    from '@angular/common/http';
   ],
   ...
 })</code></pre>
-  
+
     <p>Create a private attribute in the constructor method in src/app/app.modules.js and a new method named getUsers.</p>
     <pre><code class="language-typescript">constructor(private http: HttpClient ) { }
-    
+
 getUsers(){
     return this.http.get('https://jsonplaceholder.typicode.com/users/');
 }</code></pre>
@@ -75,10 +67,10 @@ getUsers(){
     <p>The method get of the object HttpClient return an observable object. This observable is waiting for an asynchronous response.</p>
     <p>When the answer arrive, it execute one or several callback functions. These callbacks are created calling the subscribe method.</p>
     <p>We will do it in the component src/app/app.component.js, but first, we  have to  import the service.</p>
-    <pre><code class="language-typescript">import { ApiService } from './api.service';</code></pre>    
+    <pre><code class="language-typescript">import { ApiService } from './api.service';</code></pre>
 
     <p>We need a property which contain the data to be rendered into the template.</p>
-    <pre><code class="language-typescript">contacts:any = [];</code></pre>    
+    <pre><code class="language-typescript">contacts:any = [];</code></pre>
 
 
     <p>We create a private attribute which will contain the service.</p>
@@ -138,7 +130,7 @@ deleteUsers(id){
 ...</code></pre>
 
     <p>You can test deleting functionality now.</p>
-    
+
 
 
 
@@ -150,11 +142,11 @@ deleteUsers(id){
     <p>We also will set id (template reference) to some elements of template adding the sign # which is something that angular allow us to do.</p>
     <p>They are #name, #email and #phone and we used them as first parameter in update methods.</p>
     <pre><code class="language-html">&lt;div *ngFor=&quot;let contact of contacts&quot;&gt;
-    &lt;span&gt;Name: &lt;span contenteditable=&quot;true&quot; 
+    &lt;span&gt;Name: &lt;span contenteditable=&quot;true&quot;
     #name (blur)='update(name, &quot;name&quot;, contact)'&gt;@{{contact.name}}&lt;/span&gt;&lt;/span&gt;&lt;br/&gt;
-    &lt;span&gt;Email: &lt;span contenteditable=&quot;true&quot; 
+    &lt;span&gt;Email: &lt;span contenteditable=&quot;true&quot;
     #mail (blur)='update(mail, &quot;mail&quot;, contact)'&gt;@{{contact.email}}&lt;/span&gt;&lt;/span&gt;&lt;br/&gt;
-    &lt;span&gt;Phone: &lt;span contenteditable=&quot;true&quot; 
+    &lt;span&gt;Phone: &lt;span contenteditable=&quot;true&quot;
     #phone (blur)='update(phone, &quot;phone&quot;, contact)'&gt;@{{contact.phone}}&lt;/span&gt;&lt;/span&gt;
     &lt;input type=&quot;button&quot; (click)=&quot;drop(contact.id)&quot; value=&quot;Delete&quot;/&gt;
     &lt;hr/&gt;
@@ -191,24 +183,24 @@ updateUser(post) {
 ...</code></pre>
 
     <p>You can test update functionality now.</p>
-    
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <p>Finally, we implement create method adding it in a bottom of the template.</p>
     <pre><code class="language-typescript">&lt;input type=&quot;button&quot; (click)='create()' value=&quot;Create new  User&quot;/&gt;</code></pre>
-    
+
     <p>We need to implement the cerate method in the component src/app/app.component.js.</p>
     <pre><code class="language-typescript">...
 create = () =&gt; {
@@ -316,7 +308,7 @@ export class AppComponent {
             this.contacts.push(data);
         });
     }
-    
+
     ngOnInit() {
         this.api.getUsers()
         .subscribe(data =&gt; {
@@ -340,20 +332,5 @@ export class AppComponent {
 &lt;input type=&quot;button&quot; (click)='create()' value=&quot;Create new  User&quot;/&gt;</code></pre>
 
 
-
-
-
-
-
-
-
-
-
-
-
 </div>
-@endsection
-
-@section('js')
-<script type="text/javascript" src="{{asset('js/prism.js')}}"></script>
 @endsection

@@ -1,14 +1,5 @@
 @extends('general.layout')
 
-
-@section('css')
-<link href="{{asset('css/prism.css')}}" rel="stylesheet" type="text/css"/>
-<style>
-p{
-    margin: 16px auto;
-}</style>
-@endsection
-
 @section('content')
 <div class="content">
     <h1>React</h1>
@@ -18,9 +9,9 @@ p{
     This aplication consisted in two functions wrote in TypeScript, she was App.js and he was User.js.
     She was very happy. Every response she got was shared with her husband.
     He, as a good man, always rendered the data received from his wife.</p>
-    <p>App.js had a lover, but User.js never realize that. 
+    <p>App.js had a lover, but User.js never realize that.
     The third part was an elegant server who serve all the request he got of every single innocent App.js he met.</p>
-    <p>The poor User.js was a good man. But he was not smart. 
+    <p>The poor User.js was a good man. But he was not smart.
     He never handled the status of his relationship and always obey the instructions App.js gave to him.</p>
     <p>This story start in the following way...</p>
 
@@ -68,7 +59,7 @@ function App() {
 
 export default App;</code></pre>
 
-    
+
     <p>Create src/User.js</p>
     <pre><code class="language-typescript">import React from &quot;react&quot;;
 
@@ -82,7 +73,7 @@ const User = ({contact}) =&gt; {
 }
 
 export default User;</code></pre>
-    
+
     <p>Run local server</p>
     <pre><code class="language-css">npm start</code></pre>
 
@@ -139,7 +130,7 @@ const User = ({contact, deleleUser}) =&gt; {
 
 export default User;</code></pre>
 
-<p>Test the application.</p> 
+<p>Test the application.</p>
 
 
 
@@ -159,7 +150,7 @@ export default User;</code></pre>
     const updating = (post) =&gt;{
         console.log(&quot;Updating &quot;+post.id+&quot; done!&quot;);
     }
-    
+
     const updateUser = (post) =&gt; {
         console.log(&quot;Updating &quot;+post.id);
         fetch('https://jsonplaceholder.typicode.com/posts/'+post.id, {
@@ -354,7 +345,7 @@ const User = ({contact, deleleUser, updateUser}) =&gt; {
         contact.name = e.target.innerHTML
         updateUser(contact)
     }
-    
+
     const updateMail = (e) =&gt; {
         contact.email = e.target.innerHTML
         updateUser(contact)
@@ -381,9 +372,5 @@ export default User;
 
 
 
-</div>    
-@endsection
-
-@section('js')
-<script type="text/javascript" src="{{asset('js/prism.js')}}"></script>
+</div>
 @endsection

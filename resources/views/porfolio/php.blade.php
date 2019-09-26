@@ -1,14 +1,6 @@
 @extends('general.layout')
 
 
-@section('css')
-<link href="{{asset('css/prism.css')}}" rel="stylesheet" type="text/css"/>
-<style>
-p{
-    margin: 16px auto;
-}</style>
-@endsection
-
 @section('content')
 <div class="content">
     <h1>PHP</h1>
@@ -55,7 +47,7 @@ MYSQL_PASSWORD=secret
 ...
 </code></pre>
 
-    <p>And set the values in php-project/web/.env 
+    <p>And set the values in php-project/web/.env
     (or in /var/www/.env if you are into the container).</p>
     <pre><code class="language-bash">...
 DB_HOST=mysql
@@ -72,7 +64,7 @@ DB_PASSWORD=secret
     <p>Check laravel application.</p>
     <pre><code class="language-bash">http://localhost</code></pre>
 
-   
+
 
 
 
@@ -86,7 +78,7 @@ DB_PASSWORD=secret
 
     <p>You can go out of the container just writing exit.</p>
     <pre><code class="language-bash">root@bb281fc97634:/var/www# exit</code></pre>
-    
+
     <p>You can stop docker-compose executing the following command in the php-project/laradock/ folder.</p>
     <pre><code class="language-bash">sudo docker-compose stop</code></pre>
 
@@ -150,8 +142,8 @@ DB_PASSWORD=secret
     <pre><code class="language-javascript"> Illuminate\Database\QueryException  : SQLSTATE[HY000] [2054] The server requested authentication method unknown to the client (SQL: select * from information_schema.tables where table_schema = default and table_name = migrations and table_type = 'BASE TABLE')</code></pre>
 
     <p>To solve this issue you have to go into mysql container and alter the way the users are identified and configure mysql_native_password way.</p>
-    
-    
+
+
     <p>Check the mysql container name (probably 'laradock_mysql_1'), and go into it.</p>
     <pre><code class="language-bash">sudo docker exec -it laradock_mysql_1 bash</code></pre>
 
@@ -178,7 +170,7 @@ Query OK, 0 rows affected (0.14 sec)</code></pre>
 
 
     <p>To generate routes go to routes/api.php and write the following.</p>
-    <pre><code class="language-javascript">Route::apiResource('Product', 'ProductController');</code></pre> 
+    <pre><code class="language-javascript">Route::apiResource('Product', 'ProductController');</code></pre>
 
     <p>Then, in app/Providers/RouteServiceProvider.php write the following.</p>
     <pre><code class="language-javascript">public function boot()
@@ -190,7 +182,7 @@ Query OK, 0 rows affected (0.14 sec)</code></pre>
 
     <p>With this step, we mapping the url http://localhost/api/Product with the Product model.</p>
     <p>That enable to inject an instance of the model in the methods of the ProductController, as we will see in the next steps.</p>
-    
+
     <p>In app/Http/Controllers/ProductController.php we have to write the following methods.</p>
     <pre><code class="language-javascript">public function index() {
     return Product::all();
@@ -222,11 +214,7 @@ public function destroy(Product $product) {
 
     <p>Now, you cant test the aplication with any API Rest consumer. In the following url.</p>
     <pre><code class="language-javascript">http://localhost/Product</code></pre>
-    
 
-</div>    
-@endsection
 
-@section('js')
-<script type="text/javascript" src="{{asset('js/prism.js')}}"></script>
+</div>
 @endsection
