@@ -45,3 +45,8 @@
 .sticky + .content {
   padding-top: 60px;
 }
+
+#navbar .container{
+  display: flex; 
+  justify-content: space-around;
+}

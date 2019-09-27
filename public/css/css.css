@@ -2,6 +2,20 @@ body{
      font-size: 22px;
      margin: 0;
 }
+@media screen and (max-width: 768px) {
+    body{
+        font-size: 16px!important;
+    }
+    p{
+        -ms-word-break: break-all!important;
+    word-break: break-all!important;
+    word-break: break-word!important;
+
+    -webkit-hyphens: auto!important;
+    -moz-hyphens: auto!important;
+    hyphens: auto!important;
+    }
+}
 pre {
     /*font-size: 17px!important;*/
 }
@@ -39,3 +53,4 @@ a{
 .footer i, .footer b{
     display: inline-block;
 }
+

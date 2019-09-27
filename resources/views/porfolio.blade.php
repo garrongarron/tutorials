@@ -76,8 +76,8 @@
            
             <hr>
             <div class="links">
-                <a href="{{route('porfolio.ssh-key')}}">SSH key</a>
-                <a href="{{route('porfolio.bash')}}">Bash scripting</a>
+                <a href="{{route('porfolio.ssh-key')}}">SSH</a>
+                <a href="{{route('porfolio.bash')}}">Bash</a>
             </div>
 
             <p>Most of the projects are "Hello World" applications.
