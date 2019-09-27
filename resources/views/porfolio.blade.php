@@ -54,16 +54,10 @@
                 <a href="{{route('porfolio.node')}}">Node</a>
                 <a href="{{route('porfolio.python')}}">Python</a>
             </div>
-            <hr>
+            {{--<hr>
             <div class="links">
                 <a href="#">Android</a>
                 <a href="#">Webpack</a>
-            </div>
-            <hr>
-            <div class="links">
-                <a href="#">Docker</a>
-                <a href="#">Git</a>
-                <a href="#">Selenium</a>
                 <a href="#">TDD</a>
             </div>
             <hr>
@@ -71,17 +65,30 @@
                 <a href="#">SOAP</a>
                 <a href="#">RESTful</a>
                 <a href="#">Jwt</a>
+            </div>--}}
+            <hr>
+            <div class="links">
+                <a href="{{route('porfolio.docker')}}">Docker</a>
+                <a href="#">Git</a>
+                {{--<a href="#">Selenium</a>--}}
+                
+            </div>
+           
+            <hr>
+            <div class="links">
+                <a href="{{route('porfolio.ssh-key')}}">SSH key</a>
+                <a href="{{route('porfolio.bash')}}">Bash scripting</a>
             </div>
 
             <p>Most of the projects are "Hello World" applications.
                 They are web service consumers, and server API's.
-                The best part is that they are documented and have a respective tutorial to implement step by step.
+                The best part is that they are documented and have a respective tutorial to implement them step by step.
                 They are titled in the same way.</p>
             <div class="center">
                 <b>RESTful API web &lt;Server|Client&gt; Dockerized on &lt;Languague|Framework&gt;</b>
             </div>
             <p>By the way, this site is build on Laravel. It is exported as
-                    static site with a library and automatically deploy in github page.</p>
+                    static site and automatically deploy in github page.</p>
             <p>This CD/CI is a clock system where every single element has a function of the remain pieces depend on.</p>
             <p>At the moment, I am hearing offers to work, so if you have interest in contract me do not hesitate to get in touch.</p>
 

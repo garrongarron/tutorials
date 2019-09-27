@@ -1,0 +1,144 @@
+.content div{
+    display: inline-block;
+    font-size: 22px;
+    text-align: left;
+    
+}
+.content span::after{
+    content: "";
+    display: block;
+    width: 100%;
+    background: black;
+    position: relative;
+    height: 0px;
+}
+
+.c-app-a{
+    padding: 5px;
+    color: white;
+    background: repeating-linear-gradient(
+    -45deg,
+    red,
+    red 10px,
+    rgb(255, 128, 128) 10px,
+    rgb(255, 128, 128) 20px
+    );
+    color:white;
+    font-weight: bolder;
+    text-align: right!important;
+    font-size: .9rem!important;
+}
+.app-a, .app-b{
+    background: red;
+    padding: 10px;
+    color: white;
+    }
+.app-b{
+    background: orange;
+    }
+.os{
+    background: green;
+    width: 400px;
+    padding: 10px;
+    color: white;
+    }
+.service, .service-x{
+    background: blue;
+    padding: 10px;
+    color: white;
+}
+.service-x{
+    background: rgb(77, 77, 255);
+}
+.image1, .image1-1, .image2, .image2-1{
+    box-sizing: border-box;
+    display: flex;           /* establish flex container */
+    flex-direction: column;  /* make main axis vertical */
+    justify-content: center; /* center items vertically, in this case */
+    align-items: center; 
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: blue;
+}
+.image2{
+    background: rgb(77, 77, 255);
+}
+
+.image{
+    text-align: center;
+}
+.image > span{
+    width: 100%;
+    text-align: center;
+    display: block;
+    box-sizing: border-box;
+}
+
+.image1 span, .image2 span{
+    display: block;
+    width: 150px;
+    line-height: 180px;
+    margin: auto;
+    text-align: center;
+    color: black;
+}
+.image1-1, .image2-1{
+    background: white;
+}
+.image1-1{
+    
+    border: 15px dashed blue;
+}
+.image2-1{
+    border: 15px dashed rgb(77, 77, 255);
+}
+
+.circle1, .circle2 {
+    z-index: -1;
+    width: 200px;
+    height: 200px;
+    background: transparent;
+    border-radius: 50%;
+    border: 15px dashed blue;
+    -webkit-animation-name: Rotate;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: Rotate;
+    -moz-animation-duration: 5s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: Rotate;
+    -ms-animation-duration: 5s;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+}
+.circle2 {
+    border: 15px dashed rgb(77, 77, 255);
+}
+.circle1 span, .image1-1 span, .circle2 span, .image2-1 span{
+    line-height: 180px;
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    display: block;
+    float: left;
+}
+@-webkit-keyframes Rotate
+{
+ from{-webkit-transform:rotate(0deg);}
+ to{-webkit-transform:rotate(360deg);}
+}
+@-moz-keyframes Rotate
+{
+ from{-moz-transform:rotate(0deg);}
+ to{-moz-transform:rotate(360deg);}
+}
+@-ms-keyframes Rotate
+{
+ from{-ms-transform:rotate(0deg);}
+ to{-ms-transform:rotate(360deg);}
+}
+
+

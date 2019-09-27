@@ -53,4 +53,26 @@ Route::get('/', function () {
         Route::get('restful-api-python', function () {
             return view('porfolio.python');
         })->name('python');
+
+
+        Route::get('docker', function () {
+            return view('porfolio.docker');
+        })->name('docker');
+
+
+        Route::get('ssh-key', function () {
+            return view('porfolio.ssh-key');
+        })->name('ssh-key');
+
+        Route::get('bash', function () {
+            return view('porfolio.bash');
+        })->name('bash');
+
+
+
+
+
+
+
+
     });
