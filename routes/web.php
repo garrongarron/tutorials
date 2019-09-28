@@ -71,6 +71,13 @@ Route::get('/', function () {
 
 
 
+        Route::get('whyhireme', function () {
+            return view('porfolio.whyhireme');
+        })->name('whyhireme');
+
+
+
+
 
 
 

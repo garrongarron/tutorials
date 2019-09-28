@@ -32,13 +32,28 @@
 
     <div class="container">
         @yield('content')
+        
     </div>
     @section('footer')
-        <div class="footer">
-            <b>federico.zacayan@gmail.com</b>
-            <!-- <i>0272605604</i> -->
+    <div class="footer">
+        <div class="about-me">
+            <span>Located: Auckland</span>    
+            <span>Visa Status: Work & Holiday</span>
+            <span>Job Status: Available</span>
         </div>
+        <div class="about-me">
+            <span>Experience: 6+ years</span>
+            <span>Email: federico.zacayan@gmail.com</span>
+            <span>Why hire me? <a href="{{route('porfolio.whyhireme')}}"">it is answered here</a></span>
+        </div>    
+
+    </div>
+        <!--<div class="footer-mail">
+            <b class="email">federico.zacayan@gmail.com</b>
+            <i>0272605604</i>
+        </div>-->
     @show
+
 </body>
 @section('js')
     <script type="text/javascript" src="js/prism.js"></script>
