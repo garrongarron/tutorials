@@ -30,10 +30,10 @@
 
             <p>Immigration site also informs<a href="https://www.immigration.govt.nz/new-zealand-visas/apply-for-a-visa/tools-and-information/tools/points-indicator-smc-28aug">how many points I can claim</a>. And I can get 50 point getting a job.</p>
 
-            <div class="center"><img id="myImg" src="images/50.png" alt="125 Points" style="width:90%;max-width:300px"></div>
+            <div class="center"><img id="myImg" src="images/50.png" alt="If I was working" style="width:90%;max-width:300px"></div>
 
             <p>Or getting a job offer too.</p>
-            <div class="center"><img id="myImg" src="images/50.b.png" alt="125 Points" style="width:90%;max-width:300px"></div>
+            <div class="center"><img id="myImg" src="images/50.b.png" alt="If I get a Job offer" style="width:90%;max-width:300px"></div>
 
             <p>So, If I get a job, I can live and work in New Zealand indefinitely.</p>
             
