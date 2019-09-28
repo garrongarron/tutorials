@@ -3,9 +3,7 @@
     @include('general.header')
     <div id="navbar">
         <div class="container">
-            <!-- <a href="javascript:void(0)">News</a>
-            <a href="javascript:void(0)">Contact</a> -->
-            <a href="https://github.com/federicozacayan/" target="_blank">GitHub</a>
+            <a href="{{route('porfolio.home')}}">Home</a>
         </div>
     </div>
 @endsection
