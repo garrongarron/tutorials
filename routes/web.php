@@ -32,6 +32,10 @@ Route::get('/', function () {
         Route::get('/', function () {
             return view('porfolio');
         })->name('home');
+        Route::get('php-and-mysql', function () {
+            return view('porfolio.php-and-mysql');
+        })->name('php-and-mysql');
+
         Route::get('restful-api-react', function () {
             return view('porfolio.react');
         })->name('react');
@@ -74,12 +78,5 @@ Route::get('/', function () {
         Route::get('whyhireme', function () {
             return view('porfolio.whyhireme');
         })->name('whyhireme');
-
-
-
-
-
-
-
 
     });

@@ -44,6 +44,10 @@
                 reading tutorials about RESTful API. This allowme increase my productivity a 50% in RESTful API's develop.</p>
 
             <div class="links">
+                <a href="{{route('porfolio.php-and-mysql')}}">PHP &amp; MYSQL</a>
+            </div>
+            <hr>
+            <div class="links">
                 <a href="{{route('porfolio.react')}}">React</a>
                 <a href="{{route('porfolio.angular')}}">Angular</a>
                 <a href="{{route('porfolio.vue')}}">Vue</a>
@@ -71,9 +75,9 @@
                 <a href="{{route('porfolio.docker')}}">Docker</a>
                 <a href="#">Git</a>
                 {{--<a href="#">Selenium</a>--}}
-                
+
             </div>
-           
+
             <hr>
             <div class="links">
                 <a href="{{route('porfolio.ssh-key')}}">SSH</a>
