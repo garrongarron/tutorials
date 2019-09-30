@@ -168,29 +168,5 @@ $conn-&gt;close();</code></pre>
 <p>You must to use Stored Procedures instead.</p>
 <p>The link: <a href="http://www.mysqltutorial.org/introduction-to-sql-stored-procedures.aspx">http://www.mysqltutorial.org/introduction-to-sql-stored-procedures.aspx</a></p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 @endsection
