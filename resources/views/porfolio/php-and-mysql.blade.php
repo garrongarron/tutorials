@@ -18,13 +18,13 @@ if (!$conn) {
 echo &quot;Connected successfully&quot;;</code></pre>
 
 
-    <p>Or using PDO.</p>
+    <p>We can use PDO too.</p>
     <pre><code class="language-javascript">$servername = &quot;localhost&quot;;
 $username = &quot;username&quot;;
 $password = &quot;password&quot;;
 $db = &quot;dbname&quot;;
 try {
-   $conn = new PDO(&quot;mysql:host=$servername;dbname=myDB&quot;, $username, $password, $db);
+   $conn = new PDO(&quot;mysql:host=$servername;dbname=myDB&quot;, $username, $password, []);
    // set the PDO error mode to exception
    $conn-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
    echo &quot;Connected successfully&quot;;
@@ -32,7 +32,7 @@ try {
    echo &quot;Connection failed: &quot; . $e-&gt;getMessage();
 }</code></pre>
 
-<p>Of course!, you have to have installed the extension to communicate php with mysql.</p>
+<p>Of course!, you have to have installed the extensions to communicate php with mysql.</p>
 <p>You can run this command line to see the extension you have installed in your server (localhost).</p>
 
 <pre><code class="language-bash">php -m | grep mysql</code></pre>
@@ -71,12 +71,12 @@ if ($mysqli-&gt;query(&quot;INSERT into myCity (Name) VALUES (&apos;$city&apos;)
 $mysqli-&gt;close();</code></pre>
 
 
-<p>Other tricks! You can filter_var() function.</p>
+<p>Other tricks we can use is call filter_var() function.</p>
 <pre><code class="language-javascript">$string = &quot;&lt;h1&gt;Hello World!&amp;nbsp;&lt;/h1&gt;&quot;;
 $resut; = filter_var($string, FILTER_SANITIZE_STRING);
 echo $resut; // "Hello World!"
 </code></pre>
-<p>And filter_input() function.</p>
+<p>We can use the  filter_input() function also.</p>
 <pre><code class="language-javascript">$name = filter_var($_POST[&apos;name&apos;], FILTER_SANITIZE_STRING);
 ...
 $email = filter_var($_POST[&apos;email&apos;], FILTER_VALIDATE_EMAIL);
@@ -84,7 +84,7 @@ if ( $email === false ) {
  // Handle invalid emails here
  }</code></pre>
 
-<p>Other way is using filter_input() function.</p>
+<p>Other way to protect the data is using filter_input() function.</p>
 <pre><code class="language-javascript">$name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
 $email= filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
 $search = filter_input(INPUT_GET, "s", FILTER_SANITIZE_STRING);</code></pre>
@@ -135,7 +135,9 @@ echo &quot;New records created successfully&quot;;
 
 $stmt-&gt;close();
 $conn-&gt;close();</code></pre>
-<p>This function binds the parameters to the SQL query and tells the database what the parameters are. The "sss" argument, in this example, lists the types of data that the parameters are. The s character tells mysql that the parameter is a string.</p>
+<p>This function binds the parameters to the SQL query and tells the database what the parameters are.
+     The "sss" argument, in this example, lists the types of data that the parameters are.
+     The s character tells mysql that the parameter is a string.</p>
 <ul>
   <li>i - integer</li>
   <li>d - double</li>
@@ -143,10 +145,28 @@ $conn-&gt;close();</code></pre>
   <li>b - BLOB</li>
 </ul>
 
+<h2>API PHP for Mysql</h2>
+<p>PHP offers three different APIs to connect to MySQL. They are the  <b>mysql</b>, <b>mysqli</b>, and <b>PDO</b> extensions.</p>
+<p>The link: <a href="https://downloads.mysql.com/docs/apis-php-en.pdf">https://downloads.mysql.com/docs/apis-php-en.pdf</a></p>
+
+<h2>PHP.net</h2>
+<p>Remenber you always can count on the oficial documentation of php.</p>
+<p>The Link: <a href="https://www.php.net">https://www.php.net</a></p>
+
+<h2>Just SQL</h2>
+<p>There are a lot of explanation about SQL.</p>
+<p>The link: <a href="https://www.w3schools.com/sql/">https://www.w3schools.com/sql/</a></p>
+
+<h2>Just Mysql</h2>
+<p>There are a lot of explanation about Mysql.</p>
+<p>The link: <a href="https://www.tutorialspoint.com/mysql/">https://www.tutorialspoint.com/mysql/</a></p>
+
+
+
+<h2>Stored Procedures</h2>
 <p>Just in case you have to handle complex logic process using data from the database. You do not have to process it with PHP.</p>
-<p>You must to use Stored Procedures. I would like to show some examples. But You can find them in internet.</p>
-<p>Check the following link.</p>
-<pre><code class="language-javascript">http://www.mysqltutorial.org/introduction-to-sql-stored-procedures.aspx</code></pre>
+<p>You must to use Stored Procedures instead.</p>
+<p>The link: <a href="http://www.mysqltutorial.org/introduction-to-sql-stored-procedures.aspx">http://www.mysqltutorial.org/introduction-to-sql-stored-procedures.aspx</a></p>
 
 
 

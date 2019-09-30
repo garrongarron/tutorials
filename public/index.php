@@ -1,16 +1,11 @@
 <?php
-
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
  * @package  Laravel
  * @author   Taylor Otwell <taylor@laravel.com>
  */
-// $_SERVER['HTTP_HOST'] = 'federicozacayan.github.io';
-  // ["HTTP_HOST"]
-// var_dump($_SERVER);
 
-// exit();
 define('LARAVEL_START', microtime(true));
 
 /*
