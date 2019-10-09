@@ -46,7 +46,7 @@
             <div class="links">
                 <a href="{{route('porfolio.php-and-mysql')}}">PHP &amp; MYSQL</a>
                 <a href="{{route('porfolio.symfony-sonata-admin')}}"></a>
-                <a href="{{route('porfolio.symfony-4')}}">Symfony 4</a>
+                <a href="{{route('porfolio.restful-api-symfony-4')}}">Symfony 4</a>
             </div>
             <hr>
             <div class="links">

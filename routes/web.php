@@ -36,9 +36,9 @@ Route::get('/', function () {
             return view('porfolio.php-and-mysql');
         })->name('php-and-mysql');
 
-        Route::get('symfony-4', function () {
-            return view('porfolio.symfony-4');
-        })->name('symfony-4');
+        Route::get('restful-api-symfony-4', function () {
+            return view('porfolio.restful-api-symfony-4');
+        })->name('restful-api-symfony-4');
         
         Route::get('symfony-sonata-admin', function () {
             return view('porfolio.symfony-sonata-admin');
