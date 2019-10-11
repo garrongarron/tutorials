@@ -51,7 +51,7 @@
             
             <div class="chat-container">
                 <button  class="chat-buttom">Chat <i class='fas fa-comment'></i></button>
-                <iframe style="display:none;" src="{{route('porfolio.chato')}}"></iframe>
+                <iframe style="display:none;" src="{{route('porfolio.chat')}}"></iframe>
                 <span class="close-chat" style="display:none;">x</span>
             </div>
         </div>

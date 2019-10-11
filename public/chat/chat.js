@@ -34,9 +34,9 @@ $(function() {
     function addParticipantsMessage (data) {
       var message = '';
       if (data.numUsers === 1) {
-        message += "there's 1 participant";
+        message += "There's 1 participant.";
       } else {
-        message += "there are " + data.numUsers + " participants";
+        message += "There are " + data.numUsers + " participants.";
       }
       log(message);
     }
@@ -235,7 +235,7 @@ $(function() {
     socket.on('login', function (data) {
       connected = true;
       // Display the welcome message
-      var message = "Welcome to Federico Chat";
+      var message = "Please ask me something.";
       log(message, {
         prepend: true
       });

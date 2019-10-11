@@ -88,8 +88,8 @@ Route::get('/', function () {
         })->name('whyhireme');
 
 
-        Route::get('chato', function () {
+        Route::get('chat', function () {
             return view('chat.chat');
-        })->name('chato');
+        })->name('chat');
 
     });
