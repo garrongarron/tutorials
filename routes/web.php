@@ -87,4 +87,9 @@ Route::get('/', function () {
             return view('porfolio.whyhireme');
         })->name('whyhireme');
 
+
+        Route::get('chato', function () {
+            return view('chat.chat');
+        })->name('chato');
+
     });

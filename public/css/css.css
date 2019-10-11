@@ -81,6 +81,55 @@ cite{
 
 
 
+
+
+/*CHAT INICIO*/
+.chat-container{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    position: fixed;
+    bottom: 5vh;
+    right: 5vw;
+}
+.chat-buttom{
+    border-radius: 15px;
+}
+.chat{
+    position: fixed;
+    bottom: 5vh;
+    right: 5vw;
+    /* min-height: 50%;
+    background: red;
+    min-width: 50vw; */
+    margin: auto;
+    display: block;
+    width: 90%;
+    max-width: 600px;
+    border: 2px solid #4CAF50;
+    background: #4CAF50;
+    color: white;
+    border-radius: 15px;
+}
+.close-chat{
+    right: 5vh;
+    top: 1vh;
+    position: absolute;
+    cursor: pointer;
+    text-shadow: 0 0 3px #FF0000;
+}
+
+.chat iframe{
+    position: relative;
+    top: 0;
+    display: block; 
+    width: 100%;
+    min-height: 500px;
+    border: none;
+    overflow: hidden;
+    border-radius:15px;
+}
+/*CHAT FIN*/
 @media screen and (max-width: 768px) {
     body{
         font-size: 16px!important;
@@ -101,5 +150,18 @@ cite{
         justify-content: center;
         align-items: center;
     }
-}
 
+    /*Chat*/
+    .chat{
+        height: 90%;
+        width: 95vw;
+        bottom: 2.5vh;
+        right: 2.5vw;
+    }
+    .chat iframe{
+        min-height: 100%;
+    }
+    .close-chat{
+        right: 5vw;
+    }
+}

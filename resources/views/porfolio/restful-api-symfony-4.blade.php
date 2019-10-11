@@ -8,14 +8,14 @@
 
     <p>Unfortunately, Symfony is a framework flexible and it allows you to extend its functionality.</p>
     <p>That is way we can create a RESFul API almost without writing code through CLI using API-PLATFORM.</p>
-    <p>But, let's make some history.</p>
-    <p>There was upon a time a group of people who used to live developing software and WRITING code.</p>
-    <p>And that history start like this...</p>
+    <p>But, let's go to a completely different history.</p>
+    <p>There was upon a time a group of people who used to live developing software WRITING code.</p>
+    <p>And that history starts like this...</p>
     <p>Assuming you have an environment ready to deploy symfony 4, pointing your server at public/index.php, 
     in the root folder of the project run the following composer commands.</p>
     <pre><code class="language-bash">#to create a basic symfony 
 composer create-project symfony/skeleton .
-#open the borwser at http://localhost/ it has to show you the wellcome page
+#open the borwser at http://localhost/ it has to show you the welcome page
 #to check the commands available
 bin/console
 #to add more functionality in the CLI
@@ -41,7 +41,7 @@ bin/console make:entity
     <p>Let's clean and generate the database and create the tables.</p>
     <pre><code class="language-bash">#to try to drop the database
 bin/console doctrine:database:drop 
-#to try to drop the database (again)
+#to drop the database (again)
 bin/console doctrine:database:drop --force
 #to create the database
 bin/console doctrine:database:create
@@ -85,7 +85,7 @@ composer require serializer</code></pre>
 composer require friendsofsymfony/rest-bundle</code></pre>
     <p>This bundle include no official bundles, install them anyway.</p>
 
-    <p>Now, we can configure the routes:</p>
+    <p>Now, we can configure the routes mapping `product` with our controller and adding a prefix `api`:</p>
     <pre><code class="language-bash">#/config/routes.yaml
 product:
     type      : rest
@@ -117,7 +117,7 @@ fos_rest:
         formats:
             json: true</code></pre>
 
-    <p>If you test you will see options-resolver is needed.</p>
+    <p>If you test, at `http://localhost/api/products` you will see options-resolver is needed.</p>
     <pre><code  class="language-bash">&apos;body_converter.validate: true&apos; requires OptionsResolver component installation ( composer require symfony/options-resolver )</code></pre>
     <p>So, we have to install it.</p>
     <pre><code class="language-bash"># to install options-resolver
@@ -127,8 +127,7 @@ composer require sensio/framework-extra-bundle
 # to install twig (required)
 composer require twig</code></pre>
 
-    <p>Probably you will find errors related with twig.</p>
-    <p>Probably, your /config/bundle.yaml looks like this.</p>
+    <p>Probably, you will find errors related with twig and your /config/bundle.yaml looks like this.</p>
     <pre><code class="language-javascript">FOS\RestBundle\FOSRestBundle::class =&gt; [&apos;all&apos; =&gt; true],
 Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle::class =&gt; [&apos;all&apos; =&gt; true],
 Symfony\Bundle\TwigBundle\TwigBundle::class =&gt; [&apos;all&apos; =&gt; true],</code></pre>
@@ -151,7 +150,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-
 
 class ProductApiController extends AbstractFOSRestController
 {
