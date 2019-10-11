@@ -53,6 +53,7 @@
                 <button  class="chat-buttom">Chat <i class='fas fa-comment'></i></button>
                 <iframe style="display:none;" src="{{route('porfolio.chat')}}"></iframe>
                 <span class="close-chat" style="display:none;">x</span>
+                <a href="{{route('porfolio.chat')}}"></a>
             </div>
         </div>
     </div>
