@@ -47,14 +47,21 @@
             <span>Why hire me? <a href="{{route('porfolio.whyhireme')}}"">it is answered here</a></span>
         </div>    
         <div>
+            
+        @if (PEPE)
+            <base href="/">
+        @else
             <script src='https://kit.fontawesome.com/a076d05399.js'></script>
             
             <div class="chat-container">
                 <button  class="chat-buttom">Chat <i class='fas fa-comment'></i></button>
-                <iframe style="display:none;" src="{{route('porfolio.chat')}}"></iframe>
+                <iframe style="display:none;" src="https://aucklandcomputerscience-test.herokuapp.com/"></iframe>
                 <span class="close-chat" style="display:none;">x</span>
                 <a href="{{route('porfolio.chat')}}"></a>
             </div>
+            <script type="text/javascript" src="chat/js.js"></script>
+        @endif
+            
         </div>
     </div>
         <!--<div class="footer-mail">
@@ -69,7 +76,14 @@
 @section('js')
     <script type="text/javascript" src="js/prism.js"></script>
     <script type="text/javascript" src="js/sticky.js"></script>
-    <script type="text/javascript" src="chat/js.js"></script>
+    <script type="text/javascript" src="sw.js"></script>
+    <script>
+    if ("serviceWorker" in navigator) {
+        window.addEventListener('load', ()=>{
+            navigator.serviceWorker.register('sw.js')
+        })
+    }
+    </script>
 @show
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

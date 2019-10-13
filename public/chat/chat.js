@@ -128,6 +128,7 @@ $(function() {
       var $el = $(el);
   
       // Setup default options
+      console.log(options, $el);
       if (!options) {
         options = {};
       }

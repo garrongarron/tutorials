@@ -44,6 +44,8 @@
                 reading tutorials about RESTful API. This allowme increase my productivity a 50% in RESTful API's develop.</p>
 
             <div class="links">
+            
+                <a href="{{route('porfolio.framework-symfony-4')}}">Framework Symfony 4</a>
                 <a href="{{route('porfolio.php-and-mysql')}}">PHP &amp; MYSQL</a>
                 <a href="{{route('porfolio.symfony-sonata-admin')}}"></a>
                 <a href="{{route('porfolio.restful-api-symfony-4')}}">Symfony 4</a>

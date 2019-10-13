@@ -1,0 +1,10 @@
+p{
+    -webkit-transition: 0.5s all ease;
+    -moz-transition: 0.5s all ease;
+    -o-transition: 0.5s all ease;
+    transition: 0.5s all ease;
+}
+
+.content p{
+    text-align: justify;
+}

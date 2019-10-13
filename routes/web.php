@@ -32,6 +32,11 @@ Route::get('/', function () {
         Route::get('/', function () {
             return view('porfolio');
         })->name('home');
+
+        Route::get('framework-symfony-4', function () {
+            return view('porfolio.framework-symfony-4');
+        })->name('framework-symfony-4');
+
         Route::get('php-and-mysql', function () {
             return view('porfolio.php-and-mysql');
         })->name('php-and-mysql');
