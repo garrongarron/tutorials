@@ -2,8 +2,13 @@
 
 
 @section('content')
+<input type="button" value="login" onclick="login()">
+<input type="button" value="listening" onclick="listening()">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
 <link href="tts/css.css" rel="stylesheet" type="text/css"/>
 <div class="content">
+
+<div class="center"><img id="myImg" src="images/50.png" alt="If I was working" style="width:90%;max-width:300px"></div>
 
     <h1>Symfony 4</h1>
     
@@ -1520,7 +1525,7 @@ X-Symfony-Cache:  GET /is_leap_year/2012: fresh</code></pre>
     <h2>The HttpKernel Component: The HttpKernel Class</h2>
     <p>If you were to use our framework right now, you would probably have to add support for custom error messages. We do have 404 and 500 error support but the responses are hardcoded in the framework itself. Making them customizable is straightforward though: dispatch a new event and listen to it. Doing it right means that the listener has to call a regular controller. But what if the error controller throws an exception? You will end up in an infinite loop. There should be an easier way, right?</p>
     <p>Enter the HttpKernel class. Instead of solving the same problem over and over again and instead of reinventing the wheel each time, the HttpKernel class is a generic, extensible and flexible implementation of HttpKernelInterface.</p>
-    <p>This class is very similar to the framework class we have written so far: it dispatches events at some strategic points during the handling of the request, it uses a controller resolver to choose the controller to dispatch the request to, and as an added bonus, it takes care of edge cases and provides great feedback when a problem arises./p>
+    <p>This class is very similar to the framework class we have written so far: it dispatches events at some strategic points during the handling of the request, it uses a controller resolver to choose the controller to dispatch the request to, and as an added bonus, it takes care of edge cases and provides great feedback when a problem arises.</p>
     <p>Here is the new framework code:</p>
     <pre><code class="language-php">// example.com/src/Simplex/Framework.php
 namespace Simplex;
@@ -1833,5 +1838,5 @@ $container-&gt;register('matcher', Routing\Matcher\UrlMatcher::class)
     
 </div>
 <script type="text/javascript" src="tts/js.js"></script>
-
+@include('general.modal')
 @endsection
